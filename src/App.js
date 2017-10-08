@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Item from './Item/Item';
 import ListForm from './List/ListForm';
+import { DB_CONFIG } from './Config/config';
+import firebase from 'firebase/app';
+import 'firebase/database';
 import './App.css';
 
 class App extends Component {
@@ -10,20 +12,33 @@ class App extends Component {
     super(props);
     this.addItem = this.addItem.bind(this);
 
+    this.app = firebase.initializeApp(DB_CONFIG);
+    this.db = this.app.database().ref().child('items');
+
     this.state ={
-      items: [
-        { id: 1, itemContent: "Item 1" },
-     
-      ],
+      items: [],
     }
   }
 
-  addItem(item){
+  componentWillMount() {
     const previousItems = this.state.items;
-    previousItems.push({itemContent: item});
-    this.setState({
-      items: previousItems
+
+    this.db.on('child_added', snap => {
+      previousItems.push({
+        id: snap.key,
+        itemContent: snap.val().itemContent,
+      })
+
+      this.setState({
+        notes: previousItems
+      })
     })
+  }
+
+  
+
+  addItem(item){
+    this.db.push().set({itemContent: item});
   }
 
   render() {
