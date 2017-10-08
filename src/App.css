@@ -3,8 +3,12 @@ html{
 }
 
 body {
+  display: center;
+  flex: 1 1 80%;
   width: 100%;
   min-height:100%;
+  text-align: center;
+  align-content: center;
   background: 
     linear-gradient(-60deg, rgba(26, 172, 38, 0.36), rgba(30, 105, 0, 0.73)),
     url('./Static/img/1.jpg');
@@ -56,5 +60,5 @@ body {
 
 .itemsFooter {
   display: flex;
-  flex: 1 1 20%;
+  flex: 1 1 10%;
 }
