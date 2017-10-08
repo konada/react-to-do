@@ -39,16 +39,22 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 Install firebase: 
-### 'npm install -g firebase-tools'  
+### npm install -g firebase-tools  
 
 Add .env file to root directory with Firebase credentials:
 
 REACT_APP_FIREBASE_API_KEY=
+
 REACT_APP_FIREBASE_AUTH_DOMAIN=
+
 REACT_APP_FIREBASE_DATABASE_URL=
+
 REACT_APP_FIREBASE_PROJECT_ID=
+
 REACT_APP_FIREBASE_STORAGE_BUCKET=
+
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
+
 
 Set firebase database to public by editing rules as follows:
 
