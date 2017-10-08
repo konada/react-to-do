@@ -7,11 +7,11 @@
   margin: auto;
   margin-block-end: 12px;
   margin-top: 12px;
-  width: 20%;
+  width: 40%;
   font-family: 'Oswald', sans-serif;
   font-size: 1.5em;
   color: #222;
-  background-color: #eed; 
+  background-color: #B4B41D; 
   border-radius: 3px;
   box-shadow: 43x 3px 2px #333;
   opacity: 1;
@@ -26,10 +26,21 @@
       animation-fill-mode:forwards;
       animation-duration: 0.3s;
   }
+
+.closebtn {
+  float: right;
+  color: rgb(10, 10, 10);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.3em;
+}
+
+.closebtn:hover {
+    color: #FF0000;
+}
   
-  .itemContent{
-    float:left;
-    padding-right: 70px;
-    padding-bottom: 10px;
-    display: block;
-  }
+.itemContent{
+  float: left;
+  padding-bottom: 10px;
+  display: block;
+}

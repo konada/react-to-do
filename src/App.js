@@ -11,6 +11,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.addItem = this.addItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
 
     this.app = firebase.initializeApp(DB_CONFIG);
     this.db = this.app.database().ref().child('items');
@@ -33,12 +34,25 @@ class App extends Component {
         notes: previousItems
       })
     })
-  }
 
-  
+    this.db.on('child_removed', snap => {
+      for(var i=0; i < previousItems.length; i++){
+        if(previousItems[i].id === snap.key){
+          previousItems.splice(i, 1);
+        }
+      }
+      this.setState({
+        notes: previousItems
+      })
+    })
+  }
 
   addItem(item){
     this.db.push().set({itemContent: item});
+  }
+
+  removeItem(itemId){
+    this.db.child(itemId).remove();
   }
 
   render() {
@@ -51,7 +65,10 @@ class App extends Component {
         {
           this.state.items.map((item) => {
             return(
-            <Item itemContent={item.itemContent} itemId={item.id} key={item.id}/>
+            <Item itemContent={item.itemContent} 
+              itemId={item.id} 
+              key={item.id} 
+              removeItem={this.removeItem}/>
             )
           })
         }

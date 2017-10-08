@@ -8,12 +8,21 @@ class Item extends Component{
         super(props);
         this.itemContent = props.itemContent;
         this.itemId = props.itemId;
+        this.handleRemoveItem = this.handleRemoveItem.bind(this);
+    }
+
+    handleRemoveItem(id){
+        this.props.removeItem(id);
     }
 
     render(props){
         return(
             <div className="item fade-in">
                 <p className="itemContent">{this.itemContent}</p>
+                <span className="closebtn" 
+                      onClick={() => this.handleRemoveItem(this.itemId)}>
+                      &times;
+                </span>
             </div>
         )
     }
